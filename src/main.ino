@@ -2,7 +2,7 @@
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
-//#include "C:\Users\Na\Documents\Arduino\DDDDDDDDDDD\aaa"
+
 
 #define SSID "testESP8266"
 #define PASWD  "1q2w3e4r5"
@@ -198,34 +198,28 @@ void handleRoot() {
 void handleRoot1() {
   String html = pagebuttn;
   server.send(200, "text/html", html);
-  //if(server.method() == HTTP_POST) {
+  
+  digitalWrite(Relay1, HIGH);
     
-    digitalWrite(Relay1, HIGH);
-    
-  //}
+  
 }
 void handleRoot2() {
   
   String html = pagebuttn;
   server.send(200, "text/html",  html);
-  //if(server.method() == HTTP_POST) {
-
-    //Serial.println(server.method.);
+  
+  digitalWrite(Relay2, HIGH);
     
-    digitalWrite(Relay2, HIGH);
-    
-  //}
+ 
 }
 void handleRoot3() {
   String html = pagebuttn;
   server.send(200, "text/html",  html);
-  //if(server.method() == HTTP_POST) {
-    Serial.println("cc");
-    digitalWrite(Relay1, LOW);
-    digitalWrite(Relay2, LOW);
+  
+  Serial.println("cc");
+  digitalWrite(Relay1, LOW);
+  digitalWrite(Relay2, LOW);
     
-    
-  //}
 }
 
 void handleNotFound() {
@@ -294,7 +288,7 @@ void setup(void) {
     };
     char gif_colored[sizeof(gif)];
     memcpy_P(gif_colored, gif, sizeof(gif));
-    // Set the background to a random set of colors
+    
     gif_colored[16] = millis() % 256;
     gif_colored[17] = millis() % 256;
     gif_colored[18] = millis() % 256;
